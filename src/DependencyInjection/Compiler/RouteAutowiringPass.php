@@ -76,7 +76,9 @@ final class RouteAutowiringPass implements CompilerPassInterface
     {
         return (new Definition(RouteCollectionBuilder::class))
             ->setArguments([new Reference('rollerworks_route_autowiring.route_loader_delegate')])
-            ->setPublic(false)
+            // Services are not inlined as private
+            // This prevents a Symfony 2.8 circular dependency warning
+//            ->setPublic(false)
         ;
     }
 
