@@ -12,7 +12,9 @@
 namespace Rollerworks\Bundle\RouteAutowiringBundle;
 
 use Symfony\Component\Config\Loader\Loader;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Routing\RouteCollectionBuilder;
 
 /**
  * RouteSlotLoader loads from pre-registered routing slots.
@@ -51,7 +53,8 @@ final class RouteSlotLoader extends Loader
             return new RouteCollection();
         }
 
-        return $this->slots[$resource];
+        $collection = $this->slots[$resource];
+        return $collection;
     }
 
     /**

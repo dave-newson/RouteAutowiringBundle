@@ -9,5 +9,10 @@
             <argument type="collection" />
             <tag name="routing.loader" />
         </service>
+
+        <service id="rollerworks_route_autowiring.route_loader_delegate" class="Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader">
+            <argument type="service" id="controller_name_converter" />
+            <argument type="service" id="routing.resolver" />
+        </service>
     </services>
 </container>

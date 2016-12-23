@@ -11,11 +11,18 @@
 
 namespace Rollerworks\Bundle\RouteAutowiringBundle;
 
+use Rollerworks\Bundle\RouteAutowiringBundle\DependencyInjection\Compiler\RouteAutowiringPass;
 use Rollerworks\Bundle\RouteAutowiringBundle\DependencyInjection\RouteAutowiringExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class RollerworksRouteAutowiringBundle extends Bundle
 {
+    public function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new RouteAutowiringPass());
+    }
+
     public function getContainerExtension()
     {
         if (null === $this->extension) {

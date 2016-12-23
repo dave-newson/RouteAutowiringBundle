@@ -75,8 +75,9 @@ final class RouteAutowiringPass implements CompilerPassInterface
     private function createCollectionBuilder()
     {
         return (new Definition(RouteCollectionBuilder::class))
-            ->setArguments([new Reference('routing.loader')])
+            ->setArguments([new Reference('rollerworks_route_autowiring.route_loader_delegate')])
             ->setPublic(false)
         ;
     }
+
 }
